@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support;
+namespace App\Util;
 use Illuminate\Support\Facades\DB;
 
 class FileHelper
@@ -45,7 +45,7 @@ class FileHelper
 
     public static function fileAccepted($file)
     {
-       
+
         $maxdimention = config('AllowedFileType.collection.max_size');
 
         //dd($file->getSize(), $maxdimention);

@@ -4,46 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "edfeae0d2115b33a04c024f68f931267",
+    "content-hash": "4fb2b2f71e82ea223cf8cf90892cbaac",
     "packages": [
-        {
-            "name": "ambitionphp/phpqrcode",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ambitionphp/phpqrcode.git",
-                "reference": "45e1f7c51d92d98330ea34b94bb9ef4cb056e0bd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ambitionphp/phpqrcode/zipball/45e1f7c51d92d98330ea34b94bb9ef4cb056e0bd",
-                "reference": "45e1f7c51d92d98330ea34b94bb9ef4cb056e0bd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "qrlib.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL"
-            ],
-            "description": "A PHP class to generate QR Code. Fork of t0k4rt/phpqrcode with composer support ",
-            "homepage": "http://github.com/ambitionphp/phpqrcode",
-            "keywords": [
-                "php",
-                "qrcode"
-            ],
-            "support": {
-                "source": "https://github.com/ambitionphp/phpqrcode/tree/1.0.3"
-            },
-            "time": "2020-11-20T20:22:48+00:00"
-        },
         {
             "name": "bacon/bacon-qr-code",
             "version": "2.0.8",
