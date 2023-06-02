@@ -6,7 +6,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "ambitionphp/phpqrcode": "^1.0",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
@@ -37,7 +36,7 @@
         },
 
         "files":[
-            "app\\support\\FileHelper.php",
+            "app\\Util\\FileHelper.php",
             "config\\livewire.php"
         ]
     },
@@ -48,7 +47,7 @@
     },
     "scripts": {
         "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
 
         ],
         "post-update-cmd": [
