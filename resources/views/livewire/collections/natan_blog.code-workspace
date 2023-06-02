@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"name": "natan_blog",
+			"path": "../../../.."
+		}
+	],
+	"settings": {
+		"screencastMode.mouseIndicatorSize": 30,
+		"mssql.format.keywordCasing": "uppercase",
+		"color-highlight.matchRgbWithNoFunction": true,
+		"color-highlight.matchWords": true,
+		"php.format.rules.arrayInitializersAlignKeyValuePairs": false,
+		"php.format.rules.callParametersNewLineBeforeRightParen": false,
+		"editor.tokenColorCustomizations": {
+			"[Monokai]": {
+				"comments": "#229977",
+				"functions": "#"
+			}
+		},
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "Natan",
+				"database": "natan_blog",
+				"username": "fabio",
+				"password": "Hillbert9#"
+			}
+		]
+	}
+}

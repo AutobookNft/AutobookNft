@@ -1,0 +1,70 @@
+<x-jet-form-section submit="updatePhotoDocfront">
+    <x-slot name="title">
+        {{ __('Front photograph of the document') }}
+    </x-slot>
+
+    <x-slot name="description">
+        {{ __('Upload the front part of your document\'s photograph, make sure it is perfectly in focus') }}
+    </x-slot>
+
+    <x-slot name="form">
+
+            <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
+                <!-- Doc Photo front -->
+                <input type="file" class="hidden" wire:model="photo_doc_front" x-ref="photo_doc_front" x-on:change="
+                                    photoName = $refs.photo_doc_front.files[0].name;
+                                    const reader = new FileReader();
+                                    reader.onload = (e) => {
+                                        photoPreview = e.target.result;
+                                    };
+                                    reader.readAsDataURL($refs.photo_doc_front.files[0]);
+                            " />
+
+                <x-jet-label for="photo_doc_front" value="{{ __('Front photograph of the document') }}" />
+
+                <!-- Current Banner image -->
+                <div class="mt-2" x-show="! photoPreview">
+                    <img src="{{$this->user->doc_photo_path_f }}" title="{{ $this->user->doc_photo_path_f}}"
+                        alt="{{ 'Front photograph of the document' }}" class="object-cover w-40 h-20 rounded-3xl">
+                </div>
+
+                <!-- New Banner image Preview -->
+                <div class="mt-2" x-show="photoPreview" style="display: none;">
+                    <span class="block w-40 h-20 rounded-3xl bg-center bg-no-repeat bg-cover"
+                        x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
+                    </span>
+                </div>
+
+                {{-- <div class="mt-2" style="display: none;">
+                    <span class="block w-40 h-20 rounded-3xl bg-center bg-no-repeat bg-cover">
+                        {{ $originalName }}
+                    </span>
+                </div> --}}
+
+                <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo_doc_front.click()">
+                    {{ __('Upload Photo') }}
+                </x-jet-secondary-button>
+
+                @if ($this->user->doc_photo_path_f)
+                <x-jet-secondary-button type="button" class="mt-2" wire:click="delete_photo_doc_front()">
+                    {{ __('Remove Photo') }}
+                </x-jet-secondary-button>
+                @endif
+
+                <x-jet-input-error for="photo_doc_front" class="mt-2" />
+            </div>
+
+    </x-slot>
+
+
+    <x-slot name="actions">
+        <x-jet-action-message class="mr-3" on="saved">
+            {{ __('Saved.') }}
+        </x-jet-action-message>
+
+        <x-jet-button wire:loading.attr="disabled" wire:target="photo_doc_front">
+            {{ __('Save') }}
+        </x-jet-button>
+    </x-slot>
+
+</x-jet-form-section>
