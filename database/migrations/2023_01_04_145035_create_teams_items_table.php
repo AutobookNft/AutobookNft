@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('drop_id')->references('id')->on('drops')->onDelete('set null');
             $table->string('title', 60);
             $table->text('description')->nullable();
+            $table->date('creation_date')->nullable();
             $table->float('size')->nullable();
             $table->float('dimention')->nullable();
             $table->boolean('show')->default(false)->nullable();
