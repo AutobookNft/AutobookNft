@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Collections;
 
 use App\Models\Team_utility_files;
-use App\Support\FileHelper;
+use App\Util\FileHelper;
 use App\Traits\HasUtilitys;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;

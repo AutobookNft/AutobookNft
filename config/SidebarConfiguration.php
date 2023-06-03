@@ -55,10 +55,5 @@ return [
         'traits',
         'utility',
     ],
-    'item-zoom' =>[
-        'dashboard',
-        'itemedit',
-        'traits',
-        'utility',
-    ],
+
 ];

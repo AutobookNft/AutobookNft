@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Support\FileHelper;
+use App\Util\FileHelper;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
