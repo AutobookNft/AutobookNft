@@ -45,7 +45,7 @@ return [
     ],
 
     'audio' => [
-        'allowed_types' => explode(',', env('ALLOWED_AUDIO_TYPES', "mp3,wav,m4a")),
+        'allowed_types' => explode(',', env('ALLOWED_AUDIO_TYPES', 'mp3,wav,m4a')),
         'max_size' => env('MAX_AUDIO_SIZE', 20480),
         'mime_types' => [
             '.mp3' => 'audio/mpeg',
