@@ -35,7 +35,7 @@ return [
         ],
 
     'ebooks' => [
-        'allowed_types' => explode(',', env('ALLOWED_EBOOK_TYPES', ['.pdf','.epub'])),
+        'allowed_types' => explode(',', env('ALLOWED_EBOOK_TYPES', 'pdf,epub')),
         'max_size' => env('MAX_EBOOK_SIZE', 2048),
         'mime_types' => [
             '.pdf' => 'application/pdf',
@@ -45,7 +45,7 @@ return [
     ],
 
     'audio' => [
-        'allowed_types' => explode(',', env('ALLOWED_AUDIO_TYPES', ['.mp3','.wav', '.m4a'])),
+        'allowed_types' => explode(',', env('ALLOWED_AUDIO_TYPES', "mp3,wav,m4a")),
         'max_size' => env('MAX_AUDIO_SIZE', 20480),
         'mime_types' => [
             '.mp3' => 'audio/mpeg',
@@ -55,7 +55,7 @@ return [
     ],
 
     'video' => [
-        'allowed_types' => explode(',', env('ALLOWED_VIDEO_TYPES', ['.mp4', '.mov', '.avi', '.mkv'])),
+        'allowed_types' => explode(',', env('ALLOWED_VIDEO_TYPES', "mp4,mov,avi,mkv")),
         'max_size' => env('MAX_VIDEO_SIZE', 20480),
         'mime_types' => [
             '.mp4' => 'video/mp4',
@@ -68,7 +68,7 @@ return [
 
 
     'document' => [
-    'allowed_types' => explode(',', env('ALLOWED_DOCUMENT_TYPES', ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.pdf', '.txt', '.rtf', '.odt', '.ods', '.odp', '.html'])),
+    'allowed_types' => explode(',', env('ALLOWED_DOCUMENT_TYPES', "doc,docx,xls,xlsx,ppt,pptx,pdf,txt,rtf,odt,ods,odp,tml")),
     'max_size' => env('MAX_DOCUMENT_SIZE', 20480), // in KB
         'mime_types' => [
             '.doc' => 'application/msword',
