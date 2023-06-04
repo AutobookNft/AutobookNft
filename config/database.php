@@ -47,7 +47,7 @@ return [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('STACKHERO_MARIADB_HOST'),
-            'port' => env('DB_PORT'),
+            'port' => env('PORT'),
             'database' => env('STACKHERO_MARIADB_DB'),
             'username' => env('STACKHERO_MARIADB_USER'),
             'password' => env('STACKHERO_MARIADB_USER_PASSWORD'),
