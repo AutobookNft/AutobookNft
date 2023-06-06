@@ -13,6 +13,19 @@
             "database": "frangette_db",
             "username": "fabio",
             "password": "wb308IhcL0JeQspd"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MariaDB",
+            "name": "Natan_blog",
+            "database": "natan_blog",
+            "username": "fabio",
+            "password": "Hillbert9#"
         }
     ],
 }
