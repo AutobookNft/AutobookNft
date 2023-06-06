@@ -46,12 +46,12 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('KINSTA_MARIADB_HOST'),
-            'port' => env('PORT'),
-            'database' => env('KINSTA_MARIADB_DB'),
-            'username' => env('KINSTA_MARIADB_USER'),
-            'password' => env('KINSTA_MARIADB_USER_PASSWORD'),
-            'unix_socket' => '/var/run/mysqld/mysqld.sock',
+            'host' => env('DB_HOST'),
+            'port' => env('DB_PORT'),
+            'database' => env('DB_NAME'),
+            'username' => env('DB_USER'),
+            'password' => env('DB_PASSWORD'),
+            'unix_socket' => "/var/run/mysqld/mysqld.sock",
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
@@ -62,6 +62,28 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+
+        'mariadb' => [
+
+                'driver' => 'mysql',
+                'host' => "127.0.0.1",
+                'port' => 3306,
+                'database' => "frangette",
+                'username' => "root",
+                'password' => 'aaaaaaa',
+                'unix_socket' => "/var/run/mysqld/mysqld.sock",
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
+                'prefix' => '',
+                'prefix_indexes' => true,
+                'strict' => true,
+                'engine' => null,
+                'sslmod' => 'require',
+                'options' => extension_loaded('pdo_mysql') ? array_filter([
+                    PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+                ]) : [],
+            ],
+
 
         'pgsql' => [
             'driver' => 'pgsql',

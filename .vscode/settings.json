@@ -1,3 +1,18 @@
 {
     "path-intellisense.autocomplete": "on",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "frangettedb-8e6e5-mariadb.external.kinsta.app",
+            "port": 30189,
+            "driver": "MariaDB",
+            "name": "Kinsta",
+            "database": "frangette_db",
+            "username": "fabio",
+            "password": "wb308IhcL0JeQspd"
+        }
+    ],
 }
