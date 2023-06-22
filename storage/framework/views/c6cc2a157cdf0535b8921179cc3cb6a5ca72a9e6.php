@@ -1,3 +1,8 @@
+<<<<<<< HEAD:storage/framework/views/c6cc2a157cdf0535b8921179cc3cb6a5ca72a9e6.php
+=======
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+>>>>>>> f0ed47c (unito locale con remoto):storage/framework/views/afda2d2228fd7191e21971aa47d1129d38f86274.php
 <div class="fixed z-50 inset-0 overflow-y-auto ease-out duration-400">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 

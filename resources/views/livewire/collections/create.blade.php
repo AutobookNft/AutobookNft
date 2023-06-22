@@ -9,10 +9,8 @@
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
 
         <div class="inline-block align-bottom bg-white rounded-lg text-left
-        overflow-hidden shadow-xl transform sm:align-middle w-96"
-             role="dialog"
-             aria-modal="true"
-             aria-labelledby="modal-headline">
+        overflow-hidden shadow-xl transform sm:align-middle w-96" role="dialog" aria-modal="true"
+            aria-labelledby="modal-headline">
 
             <form wire:submit.prevent="upload()" wire:loading.attr="disabled">
                 <!-- Aggiungi un campo di input per l'upload di immagini -->
@@ -76,14 +74,17 @@
                         </div>
                     </div>
 
-                @if ($this->errors)
+                    @if ($this->errors)
                     @foreach ($this->errors as $error)
-                        <li class="text-red-500"> {{ $error }} </li>
+                    <li class="text-red-500"> {{ $error }} </li>
                     @endforeach
-                @endif
+                    @endif
 
-                <div id="image-preview-grid" class="grid grid-cols-3">
-                </div>
+                    <div id="image-preview-grid" class="grid grid-cols-3">
+                    </div>
+
+                    <!-- Aggiungi un pulsante di submit per inviare il form -->
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 
                 <!-- Aggiungi un pulsante di submit per inviare il form -->
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -101,19 +102,19 @@
                             <button wire:click="closeModal()" type="button"
                                 class="inline-flex items-center px-4 py-2 my-3 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm
                                 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
-                                {{ __('Cancel') }}
-                            </button>
-                        </span>
+                                    {{ __('Cancel') }}
+                                </button>
+                            </span>
+                        </div>
                     </div>
-                </div>
             </form>
         </div>
 
     </div>
 </div>
 
-    <script>
-        window.livewire.on('refreshPage', () => {
+<script>
+    window.livewire.on('refreshPage', () => {
             location.reload();
         });
     </script>

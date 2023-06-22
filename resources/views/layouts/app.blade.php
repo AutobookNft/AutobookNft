@@ -7,7 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-        <script src="https://kit.fontawesome.com/65e3d9e08a.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/65e3d9e08a.js" crossorigin="anonymous"></script>
 
         {{-- <link rel="stylesheet" href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
         <link rel="stylesheet" href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.theme.default.min.css">
@@ -26,11 +26,10 @@
         {{-- <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/vendors/jquery.min.js"></script>
         <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script> --}}
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        {{-- <link href="public/build/assets/app.3bbb159c.css" rel="stylesheet"> --}}
-
-        <!-- Styles -->
-        @livewireStyles
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link href="/build/assets/app.9ca2ded0.css" rel="stylesheet">
+    <!-- Styles -->
+    @livewireStyles
 
         {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
         <script src="https://www.jsdelivr.com/package/npm/pdfjs-dist"></script>

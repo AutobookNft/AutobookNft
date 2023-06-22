@@ -14,10 +14,18 @@
 
     </div>
 
+<<<<<<< HEAD:storage/framework/views/c4620f8535c2983f5bfea7122e64bfd05920ba81.php
     <div id="view" class="w-11/12 absolute top-[66px] z-10 ml-2 border border-green-500" :class="{'': open}">
 
         <div class="h-screen fixed w-[180px] md:w-[240px] bg-white hidden md:block shadow-xl px-3 transition-transform duration-300
                         ease-in-out rounded-lg" :class="{'w-[144]': open, 'hidden': !open}" id="sidebar">
+=======
+    <div id="view" class="flex flex-col w-11/12 absolute top-[66px] z-10 ml-2 border border-gray-500"
+        :class="{'': open}">
+
+        <div class="h-screen fixed w-[180px] md:w-[240px] bg-white hidden md:block shadow-xl px-3 transition-transform duration-300
+                    ease-in-out rounded-lg" :class="{'w-[144]': open, 'hidden': !open}" id="sidebar">
+>>>>>>> f0ed47c (unito locale con remoto):storage/framework/views/177b55162501be09879d3e18259f4de112478496.php
 
             <div class="mt-5 h-screen overflow-y-auto">
                 <?php echo e($head); ?>
@@ -34,17 +42,27 @@
             </div>
         </div>
 
+<<<<<<< HEAD:storage/framework/views/c4620f8535c2983f5bfea7122e64bfd05920ba81.php
         <div class="absolute -top-[80px] w-screen flex justify-center mt-2">
+=======
+        <div class="absolute -top-[90px] w-screen flex justify-center mt-2">
+>>>>>>> f0ed47c (unito locale con remoto):storage/framework/views/177b55162501be09879d3e18259f4de112478496.php
             <div class="">
                 <?php echo e($bodyhead); ?>
 
             </div>
         </div>
 
+<<<<<<< HEAD:storage/framework/views/c4620f8535c2983f5bfea7122e64bfd05920ba81.php
     <div class="z-20 absolute top-[140px] gap-6 md:left-[250px] grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 border border-red-600"
         :class="{'left-[195px] grid-cols-1': open, 'grid-cols-2 ml-4 mr-4': !open}">
+=======
+        <div class="z-20 absolute top-[140px] gap-6 md:left-[250px] grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6"
+            :class="{'left-[195px] grid-cols-1': open, 'grid-cols-2 ml-4 mr-4': !open}">
+>>>>>>> f0ed47c (unito locale con remoto):storage/framework/views/177b55162501be09879d3e18259f4de112478496.php
 
             <?php echo e($items); ?>
+
 
         </div>
 

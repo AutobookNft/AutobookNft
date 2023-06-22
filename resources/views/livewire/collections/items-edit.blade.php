@@ -1,11 +1,8 @@
 <x-sidebar wichsidebar='item-edit'>
 
     <x-slot:head>
-        <x-sidebarhead
-            image="{{ $teamItem->file_cover }}"
-            name="{{ $team->name }}"
-            type="{{ $teamItem->type }}"
-            pagename="{{ 'Edit item' }}"/>
+        <x-sidebarhead image="{{ $teamItem->file_cover }}" name="{{ $team->name }}" type="{{ $teamItem->type }}"
+            pagename="{{ 'Edit item' }}" />
     </x-slot:head>
 
     <x-slot:search>
@@ -19,7 +16,7 @@
     </x-slot:dashboard>
 
     <x-slot:collection>
-       <a href="{{ url('/dashboard/collection/item_upload/') }}">
+        <a href="{{ url('/dashboard/collection/item_upload/') }}">
             <x-sidebar-leftarrow item="{{ __('Collection') }}" />
         </a>
     </x-slot:collection>
@@ -31,7 +28,7 @@
     </x-slot:teamsetting> --}}
 
     <x-slot:traits>
-       <a href="{{ url('dashboard/collection/items_edit/'. $itemId . '/traits') }}">
+        <a href="{{ url('dashboard/collection/items_edit/'. $itemId . '/traits') }}">
             <x-sidebar-item item='Traits' />
         </a>
     </x-slot:traits>
@@ -44,14 +41,13 @@
 
     <x-slot:sellitem>
         <a href="#" wire:click='openExternalTransfer'>
-            <x-sidebar-item item="{{ _('External tranfer') }}"/>
+            <x-sidebar-item item="{{ _('External tranfer') }}" />
         </a>
     </x-slot:sellitem>
 
-    {{-- <x-slot:transfer>
+    <x-slot:transfer>
             @include('livewire.collections.item-include.menudrop-list-teams')
-    </x-slot:transfer> --}}
-
+    </x-slot:transfer>
 
     <x-slot:bodyhead>
 
@@ -62,12 +58,14 @@
 
             <x-slot name="message">
                 <x-jet-action-message class="mr-3" on="errore">
-                    <label class='text-red-800 font-bold text-xl'> {{ __('This item non cannot be transfered') }} </label>
+                    <label class='text-red-800 font-bold text-xl'> {{ __('This item non cannot be transfered') }}
+                    </label>
                 </x-jet-action-message>
             </x-slot>
 
             <x-slot name="content">
-                {{ __('Are you sure you would like to transfer this item from collection') . ' '. "$team->name" . __(' to collection ') }} {{ $team_name .'?' }}
+                {{ __('Are you sure you would like to transfer this item from collection') . ' '. "$team->name" . __('
+                to collection ') }} {{ $team_name .'?' }}
             </x-slot>
 
             <x-slot name="footer">
@@ -83,52 +81,46 @@
 
 
         @php
-            $items_ = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
+        $items_ = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
         @endphp
 
-        <div
-            class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
-
-            @if(Auth::user()->usertype!='epp')
-                <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ __('Manage the ') }}{{ $teamItem->title }} {{ __('item') }}</p>
-            @else
-                <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ $teamItem->title }} </p>
-            @endif
+        @if(Auth::user()->usertype!='epp')
+            <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ __('Manage the ') }}{{ $teamItem->title }} {{ __('item') }}</p>
+        @else
+            <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ $teamItem->title }} </p>
+        @endif
 
         </div>
     </x-slot:bodyhead>
 
     <x-slot:items>
 
-            @php
-                $cardType='edit';
-                $show_traits_button=false;
-            @endphp
+        @php
+        $cardType='edit';
+        $show_traits_button=false;
+        @endphp
 
-            @include('livewire.item-image')
+        @include('livewire.item-image')
 
             @if ($this->externaTransfer)
-                @include('livewire.collections.item-include.external-transfer')
+                 @include('livewire.collections.item-include.external-transfer')
             @endif
 
-            @php
-                $traits = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
-            @endphp
+        @php
+        $traits = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
+        @endphp
 
-            @include('livewire.collections.item-include.traits-for-item')
+        @include('livewire.collections.item-include.traits-for-item')
 
-            @if($utility->util_description != '')
-                @include('livewire.collections.item-include.utility-for-item')
-            @endif
+        @if($utility->util_description != '')
+        @include('livewire.collections.item-include.utility-for-item')
+        @endif
 
-            <div
-                class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
+            <div class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
+                    {!! QrCode::size(300)->generate($utility->hash_file) !!}
 
-                    {!! QrCode::size(200)->generate($utility->hash_file . ".webp") !!}
-
-            </div>
+        </div>
 
     </x-slot:items>
 
 </x-sidebar>
-

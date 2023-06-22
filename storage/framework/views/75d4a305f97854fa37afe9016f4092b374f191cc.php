@@ -238,6 +238,7 @@
             $items_ = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
         ?>
 
+<<<<<<< HEAD:storage/framework/views/75d4a305f97854fa37afe9016f4092b374f191cc.php
         <div
             class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
 
@@ -248,6 +249,19 @@
             <?php endif; ?>
 
         </div>
+=======
+       <div
+        class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
+
+        <?php if(Auth::user()->usertype!='epp'): ?>
+        <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e(__('Manage the ')); ?><?php echo e($teamItem->title); ?> <?php echo e(__('item')); ?></p>
+        <?php else: ?>
+        <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e($teamItem->title); ?> </p>
+        <?php endif; ?>
+
+    </div>
+
+>>>>>>> f0ed47c (unito locale con remoto):storage/framework/views/fa5ab7946ab810626e8bb06fa5ecef9474cca181.php
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('items', null, []); ?> 
