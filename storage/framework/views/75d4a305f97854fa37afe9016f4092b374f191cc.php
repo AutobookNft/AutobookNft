@@ -144,15 +144,12 @@
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
         </a>
-     <?php $__env->endSlot(); ?>    
-
-     <?php $__env->slot('transfer', null, []); ?> 
-            <?php echo $__env->make('livewire.collections.item-include.menudrop-list-teams', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
      <?php $__env->endSlot(); ?>
 
     
-     <?php $__env->slot('items', null, ['class' => 'font-bold']); ?> 
 
+
+     <?php $__env->slot('bodyhead', null, []); ?> 
 
         <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'jetstream::components.confirmation-modal','data' => ['wire:model' => 'confirmingItemTransfer']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -243,18 +240,17 @@
 
         <div
             class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
-                
+
             <?php if(Auth::user()->usertype!='epp'): ?>
                 <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e(__('Manage the ')); ?><?php echo e($teamItem->title); ?> <?php echo e(__('item')); ?></p>
             <?php else: ?>
                 <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e($teamItem->title); ?> </p>
             <?php endif; ?>
-        
-        </div>
 
-        <div class="absolute top-40 xs:left-60 xl:left-80 lg:w-5/6 md:2/6
-                        grid xs:grid-cols-1 sm:grid-cols-2 ll:grid-cols-3 lg:grid-cols-4 1500:grid-cols-5 1700:grid-cols-6
-                        gap-4 p-2 rounded grid-flow-row">
+        </div>
+     <?php $__env->endSlot(); ?>
+
+     <?php $__env->slot('items', null, []); ?> 
 
             <?php
                 $cardType='edit';
@@ -264,7 +260,7 @@
             <?php echo $__env->make('livewire.item-image', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <?php if($this->externaTransfer): ?>
-                 <?php echo $__env->make('livewire.collections.item-include.external-transfer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <?php echo $__env->make('livewire.collections.item-include.external-transfer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php endif; ?>
 
             <?php
@@ -277,14 +273,13 @@
                 <?php echo $__env->make('livewire.collections.item-include.utility-for-item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php endif; ?>
 
+            <div
+                class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
 
-           <div class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
-                
-                    <?php echo QrCode::size(300)->generate($utility->hash_file); ?>
+                    <?php echo QrCode::size(200)->generate($utility->hash_file . ".webp"); ?>
 
-                    
+
             </div>
-        </div>
 
      <?php $__env->endSlot(); ?>
 

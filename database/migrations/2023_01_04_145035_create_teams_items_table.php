@@ -27,24 +27,24 @@ return new class extends Migration
             $table->float('size')->nullable();
             $table->float('dimention')->nullable();
             $table->boolean('show')->default(false)->nullable();
-            $table->string('path_file', 1024)->nullable();
-            $table->string('hash_file', 1024)->nullable();
-            $table->string('hash_file_name', 1024)->nullable();
-            $table->string('file_cover', 1024)->nullable();
-            $table->string('path_absolute', 1024)->nullable();
-            $table->string('webp', 1024)->nullable();
-            $table->string('webp_filename', 1024)->nullable();
-            $table->string('thumbnail', 1024)->nullable();
+            // $table->string('path_file', 1024)->nullable();
+            $table->string('hash_file', 1024)->nullable(); // è il file originale sottoposto ad hashing, può essere un immagine, un audio, un video o un ebook
+            // $table->string('hash_file_name', 1024)->nullable();
+            $table->string('file_cover', 1024)->nullable(); // è il file (sempre un immagine) se è un immagine, è lo stesso che hash_file.
+            // $table->string('path_absolute', 1024)->nullable();
+            // $table->string('webp', 1024)->nullable();
+            // $table->string('webp_filename', 1024)->nullable();
+            // $table->string('thumbnail', 1024)->nullable();
             $table->string('extention', 10)->nullable();
             $table->integer('bind')->nullable();
             $table->integer('paired')->nullable();
             $table->decimal('price', 8, 2)->nullable();
             $table->integer('position')->nullable();
             $table->string('type', 10)->nullable();
-            $table->string('cript_filename', 2048)->nullable();
-            $table->string('file_mime', 15)->nullable();
+            $table->string('cript_filename', 1024)->nullable();
+            $table->text('file_mime')->nullable();
             $table->string('path_image', 1024)->nullable();
-            $table->string('url_IPFS', 1024)->nullable();
+            // $table->string('url_IPFS', 1024)->nullable();
             $table->text('util_description')->nullable();
             $table->text('util_code')->nullable();
             $table->text('util_data')->nullable();

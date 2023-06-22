@@ -18,6 +18,7 @@
         </a>
     </x-slot:dashboard>
 
+
     <x-slot:newitem>
         <a href='#' wire:click='create()'>
             <x-sidebar-item item='New item' />
@@ -59,59 +60,58 @@
             </a>
     </x-slot:wallet>
 
-    <x-slot:items>
 
-        <div class="absolute top-24 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
+    <x-slot:bodyhead>
 
-            @if($amountItems<1 && !$close)
-                @php($isOpen=true)
-            @endif
+        @if($amountItems<1 && !$close)
+            @php($isOpen=true)
+        @endif
 
-            @if ($isOpen)
-                @include('livewire.collections.create')
-            @endif
+        @if ($isOpen)
+            @include('livewire.collections.create')
+        @endif
 
-            @if(isset($drop))
-                <button wire:click="confirmDrop" class="px-4 py-1 text-white bg-blue-500 rounded-md">{{('Drop')}}</button>
-            @endif
+        @if(isset($drop))
+            <button wire:click="confirmDrop" class="px-4 py-1 text-white bg-blue-500 rounded-md">{{('Drop')}}</button>
+        @endif
 
-            <!-- Finestra modale -->
-            <x-jet-dialog-modal wire:model="confirmingDrop">
-                <x-slot name="title">
-                    {{ __('Confirm Drop') }}
-                </x-slot>
+        <!-- Finestra modale -->
+        <x-jet-dialog-modal wire:model="confirmingDrop">
+            <x-slot name="title">
+                {{ __('Confirm Drop') }}
+            </x-slot>
 
-                <x-slot name="content">
-                    <!-- Elenco degli item selezionati -->
-                    @foreach ($selectedItems as $itemId)
-                        <div>{{ $itemId }}</div>
-                    @endforeach
-                </x-slot>
+            <x-slot name="content">
+                <!-- Elenco degli item selezionati -->
+                @foreach ($selectedItems as $itemId)
+                    <div>{{ $itemId }}</div>
+                @endforeach
+            </x-slot>
 
-                <x-slot name="footer">
-                    <x-jet-secondary-button wire:click="cancelDrop">
-                        {{ __('Cancel') }}
-                    </x-jet-secondary-button>
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="cancelDrop">
+                    {{ __('Cancel') }}
+                </x-jet-secondary-button>
 
-                    <x-jet-button wire:click="drop">
-                        {{ __('Drop') }}
-                    </x-jet-button>
-                </x-slot>
-            </x-jet-dialog-modal>
+                <x-jet-button wire:click="drop">
+                    {{ __('Drop') }}
+                </x-jet-button>
+            </x-slot>
+        </x-jet-dialog-modal>
 
-
+        <div
+            class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
             @if(Auth::user()->usertype!='epp')
                 <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ $current_team->name }} {{ __('collection') }}</p>
             @else
                 <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ $current_team->name }} </p>
                 <p class='font-font-light text-white text-2xl'> {{ $current_team->description }} </p>
             @endif
-
         </div>
 
-        <div class="absolute top-60 xs:left-60 xl:left-80 lg:w-5/6 md:2/6
-                        grid xs:grid-cols-1 sm:grid-cols-2 ll:grid-cols-3 lg:grid-cols-4 1500:grid-cols-5 1700:grid-cols-6
-                        gap-4 p-2 rounded grid-flow-row">
+    </x-slot:bodyhead>
+
+    <x-slot:items>
 
             @foreach ($items as $item)
 
@@ -120,11 +120,11 @@
                 @switch($itemType)
                     @case('image')
                         @php($cardType='show')
-                        @php($fileCover=$item->thumbnail)
+                        @php($fileCover=$item->hash_file . ".webp")
                         @break
                     @case('audio')
                         @php($cardType='show')
-                        @php($fileCover=$item->filecover)
+                        @php($fileCover=$item->file_cover . $item->extention)
                         @break
                     @case('e-book')
                         @php($cardType='show')
@@ -143,13 +143,13 @@
 
             @endforeach
 
-        </div>
+
 
     </x-slot:items>
 
 </x-sidebar>
 
-    @section('scripts')
+    {{-- @section('scripts')
         <script>
             window.livewire.on('fileUploaded', (data) => {
                     let formData = new FormData();
@@ -161,6 +161,6 @@
                     });
                 });
         </script>
-    @endsection
+    @endsection --}}
 
 

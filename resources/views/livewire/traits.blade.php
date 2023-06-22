@@ -1,4 +1,4 @@
-<x-sidebar wichsidebar='traits'>
+<x-sidebar-traits wichsidebar='traits'>
 
     <x-slot:head>
          <x-sidebarhead
@@ -31,17 +31,11 @@
         </a>
     </x-slot:newtrait>
 
-    <x-slot:items>
-
-
-    <div class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 bg-gray-100 border-red-900
-                        grid grid-cols-1 gap-4 p-2 rounded grid-flow-row justify-items-start">
-
+    <x-slot:bodyhead>
         <p class='font-medium italic sm:text-4xl xl:text-7xl'> {{ __('Manage traits') }}</p>
+    </x-slot:bodyhead>
 
-
-    </div>
-
+    <x-slot:items>
     <div class="absolute top-52 xs:left-60 xl:left-80">
 
             <form class="grid xl:grid-cols-3 md:gap-3 bg-gray-300 border border-gray-500 p-2 rounded-lg" x-data="{ isDisabled: true }"> @csrf
@@ -120,4 +114,4 @@
 
     </x-slot:items>
 
-</x-sidebar>
+</x-sidebar-traits>

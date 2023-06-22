@@ -23,6 +23,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_url', 1024)->nullable();
+            $table->string('creator', 1024)->nullable();
             $table->string('profile_photo_path', 1024)->nullable();
 
             $table->boolean('consent')->default(false);
@@ -70,7 +71,7 @@ return new class extends Migration
             $table->string('doc_typo', 30)->nullable();
             $table->string('doc_num', 30)->nullable()->unique();
             $table->date('doc_issue_date')->nullable();
-            $table->date('doc_expired_data')->nullable();
+            $table->date('doc_expired_date')->nullable();
             $table->string('doc_issue_from')->nullable();
             $table->string('doc_photo_path_f', 2048)->nullable();
             $table->string('doc_photo_path_r', 2048)->nullable();

@@ -102,7 +102,7 @@
                                         @switch($itemType)
                                             @case('image')
                                                 @php($cardType='show')
-                                                @php($image=$item_1->thumbnail)
+                                                @php($image=$item_1->file_cover . ".webp")
                                                 @php($borderColor='border border-white hover:border-green-800')
                                                 @break
                                             @case('audio')
@@ -176,7 +176,7 @@
                                         </div>
                                     @endif
                                 @endif  {{-- End if di limite massimo di 20 item --}}
-                                
+
                             @endforeach
                         </div>
                     </div>

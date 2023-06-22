@@ -46,15 +46,14 @@
         <a href="#" wire:click='openExternalTransfer'>
             <x-sidebar-item item="{{ _('External tranfer') }}"/>
         </a>
-    </x-slot:sellitem>    
+    </x-slot:sellitem>
 
-    <x-slot:transfer>
+    {{-- <x-slot:transfer>
             @include('livewire.collections.item-include.menudrop-list-teams')
-    </x-slot:transfer>
+    </x-slot:transfer> --}}
 
-    
-    <x-slot:items class="font-bold">
 
+    <x-slot:bodyhead>
 
         <x-jet-confirmation-modal wire:model="confirmingItemTransfer">
             <x-slot name="title">
@@ -89,18 +88,17 @@
 
         <div
             class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
-                
+
             @if(Auth::user()->usertype!='epp')
                 <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ __('Manage the ') }}{{ $teamItem->title }} {{ __('item') }}</p>
             @else
                 <p class='font-medium text-white sm:text-4xl xl:text-7xl'> {{ $teamItem->title }} </p>
             @endif
-        
-        </div>
 
-        <div class="absolute top-40 xs:left-60 xl:left-80 lg:w-5/6 md:2/6
-                        grid xs:grid-cols-1 sm:grid-cols-2 ll:grid-cols-3 lg:grid-cols-4 1500:grid-cols-5 1700:grid-cols-6
-                        gap-4 p-2 rounded grid-flow-row">
+        </div>
+    </x-slot:bodyhead>
+
+    <x-slot:items>
 
             @php
                 $cardType='edit';
@@ -110,7 +108,7 @@
             @include('livewire.item-image')
 
             @if ($this->externaTransfer)
-                 @include('livewire.collections.item-include.external-transfer')
+                @include('livewire.collections.item-include.external-transfer')
             @endif
 
             @php
@@ -123,13 +121,12 @@
                 @include('livewire.collections.item-include.utility-for-item')
             @endif
 
+            <div
+                class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
 
-           <div class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
-                
-                    {!! QrCode::size(300)->generate($utility->hash_file) !!}
-                    
+                    {!! QrCode::size(200)->generate($utility->hash_file . ".webp") !!}
+
             </div>
-        </div>
 
     </x-slot:items>
 

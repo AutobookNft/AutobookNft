@@ -131,7 +131,7 @@
                                         <?php switch($itemType):
                                             case ('image'): ?>
                                                 <?php ($cardType='show'); ?>
-                                                <?php ($image=$item_1->thumbnail); ?>
+                                                <?php ($image=$item_1->file_cover . ".webp"); ?>
                                                 <?php ($borderColor='border border-white hover:border-green-800'); ?>
                                                 <?php break; ?>
                                             <?php case ('audio'): ?>
@@ -206,7 +206,7 @@
                                         </div>
                                     <?php endif; ?>
                                 <?php endif; ?>  
-                                
+
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>

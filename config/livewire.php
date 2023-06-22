@@ -11,8 +11,8 @@
 */
 return [
     'temporary_file_upload' => [
-        'rules' => ['file', 'max:20000'], // aggiungi 'max' con il valore in KB
-        'maxFileSize' => 20000, // aggiungi questo valore in KB
+        'rules' => ['file', 'max:40960'], // aggiungi 'max' con il valore in KB
+        'maxFileSize' => 40960 // aggiungi questo valore in KB
     ],
 ];
 

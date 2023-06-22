@@ -1,7 +1,7 @@
 <div class = "flex flex-col gap-2">
-    
+
     @if(Auth::user()->usertype!='epp')
-        
+
         {{-- visualizza item type --}}
         {{-- <div class='mt-2 italic text-sm text-italic font-semibold tracking-tight text-gray-900 dark:text-white'>{{ 'EcoNFT type: '. $itemType }}</div> --}}
 
@@ -25,11 +25,11 @@
             @endif
         </div>
     @endif
- 
+
     {{-- descrizione --}}
     <div class ="grid grid-cols-1">
         <div class ='w-70 italic text-sm text-italic font-semibold tracking-tight text-gray-900 dark:text-white'>
-            {{ Str::words($description, 50, '...') }}  
+            {{ Str::words($description, 50, '...') }}
         </div>
     </div>
 
@@ -53,7 +53,7 @@
 
     {{-- Checkbox per DROP --}}
     {{-- empty è scritto in collection-item nel caso in cui $drop non sia settato, se si testa $drop in collection-item si genera un errore --}}
-    @if($drop!='empty') 
+    @if($drop!='empty')
         @if(!$item->drop_id)
             <div class ='mr-2 mb-2 auto text-right'>
                 <span for='drop' class="ml-2 text-sm text-gray-600">{{ __('Drop') }}</span>
@@ -66,7 +66,7 @@
                     {{ __('Drop title: ') . $dropTitle }}
                 </span>
             </div>
-        @endif    
+        @endif
     @endif
 
     {{-- path webp --}}
@@ -94,7 +94,7 @@
     @endphp
 
     {{-- Scheda delle utility --}}
-    @if($utility->util_description != '')
+    @if(isset($utility->util_description))
         @include('livewire.collections.item-include.utility-for-item')
     @endif
 

@@ -13,11 +13,13 @@
         "laravel/jetstream": "^2.12",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.12",
         "php-amqplib/php-amqplib": "^3.5",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-cookie-consent": "^3.2",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "tailwindcss": "^3.1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

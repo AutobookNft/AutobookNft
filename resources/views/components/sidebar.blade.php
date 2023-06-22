@@ -1,51 +1,49 @@
-<div class="relative">
+<div class="relative font-poppins antialiased" x-data="{ open: false }">
 
-    <div class="font-poppins antialiased">
-        <div id="view" class="h-full w-screen flex flex-row" x-data="{ open: false }">
+    <div class="z-50 ml-4 absolute top-[80px]">
 
-            <button @click="open = ! open"
-                class="md:hidden absolute top-0 left-0 p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100
-                focus:outline-none focus:bg-gray-100 focus:text-gray-500">
-                <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+        <button @click="open = !open"
+            class="flex justify-end md:hidden p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+            <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <path :class="{'hidden': open, 'inline-flex': !open}" class="inline-flex" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path :class="{'hidden': !open, 'inline -flex': open}" class="inline-flex" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
 
-            <div id="sidebar" :class="{'block': open, 'hidden': ! open}"
-                class="absolute top-20 bg-white h-screen hidden md:block shadow-xl px-3 w-30 md:w-60 lg:w-60 overflow-x-hidden transition-transform duration-300 ease-in-out">
-
-                <div class="space-y-6 md:space-y-10 mt-10">
-
-                    {{ $head }}
-
-                    {{-- CAMPO DI RICERCA --}}
-                    {{ $search }}
-
-                    <div id="menu" class="flex flex-col space-y-2">
-
-                        {{-- {{ $dashboard }} --}}
-{{--
-                        @foreach ($sidebars as $sidebar)
-
-                            {{ eval("return $sidebar->slot; ") }}
-
-                        @endforeach --}}
-
-                        @foreach ($sidebars as $sidebar)
-                        {!! get_defined_vars()[$sidebar] !!}
-                        @endforeach
-
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
     </div>
 
-    {{ $items }}
+    <div id="view" class="w-11/12 absolute top-[66px] z-10 ml-2" :class="{'': open}">
+
+        <div class="h-screen fixed w-[180px] md:w-[240px] bg-white hidden md:block shadow-xl px-3 transition-transform duration-300
+                        ease-in-out rounded-lg" :class="{'w-[144]': open, 'hidden': !open}" id="sidebar">
+
+            <div class="mt-5 h-screen overflow-y-auto">
+                {{ $head }}
+
+                {{-- CAMPO DI RICERCA --}}
+                {{-- {{ $search }} --}}
+
+                {{-- TUTTI GLI SLOT DELLA SIDEBAR --}}
+                @foreach ($sidebars as $sidebar)
+                {!! get_defined_vars()[$sidebar] !!}
+                @endforeach
+            </div>
+        </div>
+
+        <div class="absolute -top-[80px] w-screen flex justify-center mt-2">
+            <div class="">
+                {{ $bodyhead }}
+            </div>
+        </div>
+
+        <div class="z-20 absolute top-[140px] gap-6 md:left-[250px] grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6"
+            :class="{'left-[195px] grid-cols-1': open, 'grid-cols-2 ml-4 mr-4': !open}">
+
+            {{ $items }}
+        </div>
+
+    </div>
 
 </div>

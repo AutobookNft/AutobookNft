@@ -10,6 +10,14 @@ return [
         'utility',
         'wallet',
     ],
+    'item-edit' =>[
+        'dashboard',
+        'collection',
+        'traits',
+        'utility',
+        'sellitem',
+        // 'transfer',
+    ],
     'utility_edit' => [
         'dashboard',
         'back_to_utility_list',
@@ -40,14 +48,6 @@ return [
     'open-setting-collection' =>[
         'dashboard',
         'collection',
-    ],
-    'item-edit' =>[
-        'dashboard',
-        'collection',
-        'traits',
-        'utility',
-        'sellitem',
-        'transfer',
     ],
     'item-zoom' =>[
         'dashboard',

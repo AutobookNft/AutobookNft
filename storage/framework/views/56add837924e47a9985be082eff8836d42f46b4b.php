@@ -1,7 +1,7 @@
 <div class = "flex flex-col gap-2">
-    
+
     <?php if(Auth::user()->usertype!='epp'): ?>
-        
+
         
         
 
@@ -25,11 +25,12 @@
             <?php endif; ?>
         </div>
     <?php endif; ?>
- 
+
     
     <div class ="grid grid-cols-1">
         <div class ='w-70 italic text-sm text-italic font-semibold tracking-tight text-gray-900 dark:text-white'>
-            <?php echo e(Str::words($description, 50, '...')); ?>  
+            <?php echo e(Str::words($description, 50, '...')); ?>
+
         </div>
     </div>
 
@@ -55,7 +56,7 @@
 
     
     
-    <?php if($drop!='empty'): ?> 
+    <?php if($drop!='empty'): ?>
         <?php if(!$item->drop_id): ?>
             <div class ='mr-2 mb-2 auto text-right'>
                 <span for='drop' class="ml-2 text-sm text-gray-600"><?php echo e(__('Drop')); ?></span>
@@ -69,7 +70,7 @@
 
                 </span>
             </div>
-        <?php endif; ?>    
+        <?php endif; ?>
     <?php endif; ?>
 
     
@@ -89,7 +90,7 @@
     ?>
 
     
-    <?php if($utility->util_description != ''): ?>
+    <?php if(isset($utility->util_description)): ?>
         <?php echo $__env->make('livewire.collections.item-include.utility-for-item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php endif; ?>
 

@@ -90,6 +90,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+// Route::middleware(['auth:sanctum'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->get('dashboard/drops', DropCrud::class)->name('drops');
 
 Route::middleware(['auth:sanctum', 'verified', 'superadmin'])->get('dashboard/dropcollection/{id}', DropCollection::class)->name('dropCollection');

@@ -12,13 +12,19 @@
         
 
         <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+
+        <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+        
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-        
+
 
         
 
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+        
+
         <!-- Styles -->
         <?php echo \Livewire\Livewire::styles(); ?>
 
@@ -54,15 +60,15 @@
             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('navigation-menu')->html();
-} elseif ($_instance->childHasBeenRendered('uX2lz6J')) {
-    $componentId = $_instance->getRenderedChildComponentId('uX2lz6J');
-    $componentTag = $_instance->getRenderedChildComponentTagName('uX2lz6J');
+} elseif ($_instance->childHasBeenRendered('He3MITO')) {
+    $componentId = $_instance->getRenderedChildComponentId('He3MITO');
+    $componentTag = $_instance->getRenderedChildComponentTagName('He3MITO');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('uX2lz6J');
+    $_instance->preserveRenderedChild('He3MITO');
 } else {
     $response = \Livewire\Livewire::mount('navigation-menu');
     $html = $response->html();
-    $_instance->logRenderedChild('uX2lz6J', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('He3MITO', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

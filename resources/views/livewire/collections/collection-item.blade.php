@@ -1,4 +1,4 @@
-    <x-collections.layout-item
+<x-collections.layout-item
     drop="empty"
     dropTitle=""
     collectionDrop="notdrop"

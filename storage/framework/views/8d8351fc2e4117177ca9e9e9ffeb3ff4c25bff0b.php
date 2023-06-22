@@ -1,9 +1,9 @@
-<?php if (isset($component)) { $__componentOriginalee6f77ea8284c9edd154cd0c9b3b80eff04c2bfa = $component; } ?>
-<?php $component = App\View\Components\Sidebar::resolve(['wichsidebar' => 'traits'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('sidebar'); ?>
+<?php if (isset($component)) { $__componentOriginal86f789d17c53baa00995c45a549a62b98ed057e2 = $component; } ?>
+<?php $component = App\View\Components\SidebarTraits::resolve(['wichsidebar' => 'traits'] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sidebar-traits'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Sidebar::class))->getConstructor()): ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\SidebarTraits::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
@@ -105,17 +105,11 @@
         </a>
      <?php $__env->endSlot(); ?>
 
-     <?php $__env->slot('items', null, []); ?> 
-
-
-    <div class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 bg-gray-100 border-red-900
-                        grid grid-cols-1 gap-4 p-2 rounded grid-flow-row justify-items-start">
-
+     <?php $__env->slot('bodyhead', null, []); ?> 
         <p class='font-medium italic sm:text-4xl xl:text-7xl'> <?php echo e(__('Manage traits')); ?></p>
+     <?php $__env->endSlot(); ?>
 
-
-    </div>
-
+     <?php $__env->slot('items', null, []); ?> 
     <div class="absolute top-52 xs:left-60 xl:left-80">
 
             <form class="grid xl:grid-cols-3 md:gap-3 bg-gray-300 border border-gray-500 p-2 rounded-lg" x-data="{ isDisabled: true }"> <?php echo csrf_field(); ?>
@@ -376,8 +370,8 @@
 
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginalee6f77ea8284c9edd154cd0c9b3b80eff04c2bfa)): ?>
-<?php $component = $__componentOriginalee6f77ea8284c9edd154cd0c9b3b80eff04c2bfa; ?>
-<?php unset($__componentOriginalee6f77ea8284c9edd154cd0c9b3b80eff04c2bfa); ?>
+<?php if (isset($__componentOriginal86f789d17c53baa00995c45a549a62b98ed057e2)): ?>
+<?php $component = $__componentOriginal86f789d17c53baa00995c45a549a62b98ed057e2; ?>
+<?php unset($__componentOriginal86f789d17c53baa00995c45a549a62b98ed057e2); ?>
 <?php endif; ?>
 <?php /**PATH /var/www/natan_blog/resources/views/livewire/traits.blade.php ENDPATH**/ ?>

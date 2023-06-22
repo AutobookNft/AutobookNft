@@ -39,7 +39,7 @@ class ItemsEdit extends Component
 
         $this->team =  $this->current_team;
 
-        $this->cardType = 'edit';
+        // $this->cardType = 'edit';
 
         $this->itemId = $id;
 
@@ -49,7 +49,8 @@ class ItemsEdit extends Component
 
         $this->haveUtilities = $this->teamItem->util_description ? 1 : 0; // se nel field util_description c'è un valore si assume che ci sia un utility connessa all'item
 
-        $this->fileCover = $this->teamItem->file_cover;
+        // passo il file da visualizzare, aggiungo l'estensione webp. I file visualizzati in items_edit sono solo webp
+        $this->fileCover = $this->teamItem->file_cover .".webp";
 
         $this->state = $this->teamItem->withoutRelations()->toArray();
 
@@ -242,11 +243,11 @@ class ItemsEdit extends Component
     }
 
     public function externalTransfer($teams_item_id_to_transfer){
-        
+
         // trovo l'id dell'utente al quale corrisponde l'email del ricevitore dell'item
         $rcd_user_receiver = User::where('email', $this->emailExternaTransfer)->first();
         $user_id_receiver = $rcd_user_receiver->id;
-       
+
 
         // trovo l'id del team PERSONALE dell'user che deve ricevere l'item
         // NOTA la (where:'personal_team', '1') che mi permette di trovare il team personale
@@ -264,25 +265,25 @@ class ItemsEdit extends Component
             $team_id_receiver = $team_id_receiver->id;
 
             //dd($rcd_item_id_sender, $teams_item_id_to_transfer);
-            
+
             if (isset($rcd_item_id_sender->id)) {
 
                 //dd($rcd_item_id_sender->team_id, $team_id_receiver);
-            
+
                 // sovrascrivo il team_id dell'item sendere con il ricevitore
                 $rcd_item_id_sender->team_id = $team_id_receiver;
                 $rcd_item_id_sender->save();
 
                 redirect (url('/dashboard/collection/item_upload'));
                 $this->closeExternalTransfer();
-            
+
             }else{
                 $this->addError('error', __('non esiste un item con l\'id selezionato'));
             }
 
         } else {
-            
-            $team_shopping = new Team;  
+
+            $team_shopping = new Team;
             $team_shopping->name = $rcd_user_receiver->name.'_shopping';
             $team_shopping->user_id = $user_id_receiver;
             $team_shopping->position = 0;

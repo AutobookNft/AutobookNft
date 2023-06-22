@@ -14,14 +14,21 @@
         <link href="{{ asset('css/animation.css') }}" rel="stylesheet"> --}}
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{--
+        <link href="public/build/assets/app.3bbb159c.css" rel="stylesheet"> --}}
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-        
+
 
         {{-- <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/vendors/jquery.min.js"></script>
         <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script> --}}
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- <link href="public/build/assets/app.3bbb159c.css" rel="stylesheet"> --}}
+
         <!-- Styles -->
         @livewireStyles
 

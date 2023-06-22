@@ -3,7 +3,7 @@
 @endphp
 
 @if(count($traits)>0)
-    <div class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div class="relative bg-white rounded-lg shadow-md dark:bg-gray-800">
 
         <div class="grid grid-cols-1 m-2 border border-gray-300">
             <table class="table-auto w-full text-left">

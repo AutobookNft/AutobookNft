@@ -14,41 +14,36 @@
 
     </div>
 
-    <div id="view" class="w-11/12 absolute top-[66px] z-10 ml-2" :class="{'': open}">
+    <div id="view" class="w-11/12 absolute top-[66px] z-10 ml-2 border border-green-500" :class="{'': open}">
 
         <div class="h-screen fixed w-[180px] md:w-[240px] bg-white hidden md:block shadow-xl px-3 transition-transform duration-300
                         ease-in-out rounded-lg" :class="{'w-[144]': open, 'hidden': !open}" id="sidebar">
 
             <div class="mt-5 h-screen overflow-y-auto">
-                <?php echo e($head); ?>
+                {{ $head }}
 
+                {{-- CAMPO DI RICERCA --}}
+                {{-- {{ $search }} --}}
 
-                
-                
-
-                
-                <?php $__currentLoopData = $sidebars; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sidebar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php echo get_defined_vars()[$sidebar]; ?>
-
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                {{-- TUTTI GLI SLOT DELLA SIDEBAR --}}
+                @foreach ($sidebars as $sidebar)
+                {!! get_defined_vars()[$sidebar] !!}
+                @endforeach
             </div>
         </div>
 
         <div class="absolute -top-[80px] w-screen flex justify-center mt-2">
             <div class="">
-                <?php echo e($bodyhead); ?>
-
+                {{ $bodyhead }}
             </div>
         </div>
 
-        <div class="z-20 absolute top-[140px] gap-6 md:left-[250px] grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6"
-            :class="{'left-[195px] grid-cols-1': open, 'grid-cols-2 ml-4 mr-4': !open}">
+    <div class="z-20 absolute top-[140px] gap-6 md:left-[250px] grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 border border-red-600"
+        :class="{'left-[195px] grid-cols-1': open, 'grid-cols-2 ml-4 mr-4': !open}">
 
-            <?php echo e($items); ?>
-
+            {{ $items }}
         </div>
 
     </div>
 
 </div>
-<?php /**PATH /var/www/natan_blog/resources/views/components/sidebar.blade.php ENDPATH**/ ?>

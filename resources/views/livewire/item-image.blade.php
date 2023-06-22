@@ -10,7 +10,7 @@
     :itemId="$item['id']"
     :show="$item['show']"
     paired="{{ $paired }}"
-    fileCover="{{ $fileCover }}"
+    fileCover="{{$fileCover}}"
     filename="{{ $filename }}"
     price="{{ $item['price'] }}"
     hasHfile="{{ $item['hash_file'] }}"

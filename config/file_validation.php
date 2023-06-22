@@ -17,7 +17,7 @@ he keys and sub-array structures are as follows:
 return [
     'images' => [
         'allowed_types' => explode(',', env('ALLOWED_IMAGE_TYPES', 'jpg,jpeg,png,gif,bmp,tiff,svg,eps,psd,ai,cdr,webp')),
-        'max_size' => 20480, // in KB
+        'max_size' => 40960, // in KB
         'mime_types' => [
             'jpg' => 'image/jpeg',
             'jpeg' => 'image/jpeg',

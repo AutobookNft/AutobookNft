@@ -87,7 +87,6 @@ class Items extends Component
 
         $this->teamId = $this->current_team->id;
 
-        // leggo il floorprice scritto nella intestazione della collection, se non c'è assegno 0.
         $this->floorPrice = $this->current_team->floor_price ? $this->current_team->floor_price : 0;
 
         $this->qtaDuplicateEconft = $team->econft_number ? $team->econft_number : 0;
@@ -123,69 +122,35 @@ class Items extends Component
     public function render()
     {
 
-    $team = Auth::user()->currentTeam;
+        $team = Auth::user()->currentTeam;
 
         $data = Cache::remember('items-' . $team->id, 3600, function () use ($team) {
-
-        if (isset($team->epp)) {
-
-            $epp = $team->epp;
-            if ($epp) {
-                $this->epp_name = '<=>' . $epp->org_name;
-            } else {
-                $this->epp_name = '';
+            if (isset($team->epp)) {
+                $epp = $team->epp;
+                if ($epp) {
+                    $this->epp_name = '<=>' . $epp->org_name;
+                } else {
+                    $this->epp_name = '';
+                }
             }
-        }
 
-        $this->teamId = auth()->user()->currentTeam->id;
+            $this->teamId = auth()->user()->currentTeam->id;
 
-        $items = Teams_item::where('team_id', $this->teamId)
-        ->where('bind', 0)
-        ->orderBy('position', 'asc')
-        ->get();
+            $items = Teams_item::where('team_id', $this->teamId)
+                ->where('bind', 0)
+                ->orderBy('position', 'asc')
+                ->get();
 
-        return [
-            'team' => $team,
-            'items' => $items,
-            'drop' => $this->drop,
-            'droptitle' => $this->dropTitle,
+            return [
+                'team' => $team,
+                'items' => $items,
+                'drop' => $this->drop,
+                'droptitle' => $this->dropTitle,
             ];
         });
 
-        // $team = Auth::user()->currentTeam;
-
-        // if (isset($team->epp)) {
-
-        // $epp = $team->epp;
-
-        // if ($epp) {
-        // $this->epp_name = '<=>' . $epp->org_name;
-        //     } else {
-        //     $this->epp_name = '';
-        //     }
-
-        //     }
-
-
-        //     $this->teamId = auth()->user()->currentTeam->id;
-
-
-
-        //         $items = Teams_item::where('team_id', $this->teamId)
-        //         ->where('bind', 0)
-        //         ->orderBy('position', 'asc')
-        //         ->get();
-
-        //         $data = [
-
-        //         'team'=>$team,
-        //         'items' => $items,
-        //         'drop' => $this->drop,
-        //         'droptitle' => $this->dropTitle,
-
-        //         ];
-
         return view('livewire.collections.items-upload', $data);
+
 
     }
 
@@ -336,8 +301,11 @@ class Items extends Component
 
             $hash_filename = $file->hashName();
 
-            // prendo il nome del file privo dell'esetenzione
-            $filenameWithoutExtension = pathinfo($hash_filename, PATHINFO_FILENAME);
+            // Memorizza il file su S3
+            $url=$this->s3Store($do, $hash_filename, $file, $path_image, $tempPath);
+
+            // Recupero l'hash name del file
+            $hash_filename = $file->hashName();
 
             // Recupero la sola estensione del file
             $extention = $file->extension();
@@ -345,15 +313,10 @@ class Items extends Component
             // Recupero il nome del file orginale (mi serve per criptarlo)
             $original_filename = $file->getClientOriginalName();
 
-            // Cripto il nome originale del file
-            $crypt_filename = $this->my_simple_crypt($original_filename, 'e');
-
-            // Memorizza il file su S3
-            $url=$this->s3Store($do, $hash_filename, $file, $path_image, $tempPath);
-
             // rendo pubblico il nome del file per visualizzarlo in realtime nella vista
             $this->currentFileName = $original_filename;
-
+            // Cripto il noome originale del file
+            $crypt_filename = $this->my_simple_crypt($original_filename, 'e');
 
             // Creo un nuovo record
             $teamItem = new Teams_item;
@@ -361,82 +324,67 @@ class Items extends Component
             // Scrittura del token identificaivo del creator dell'item
             $teamItem->creator=$this->current_team->creator;
 
-            // scrivo un id di questo upload.
+            // scrivo un id di questo upload, mi serve per recuperare i record per la conversione
             $teamItem->upload_id=$this->upload_id;
 
-            // Scrivo nel db l'estensione del file
+            // Scrivo l'estensione del file
             $teamItem->extention = $extention;
 
-            // Scrivo nel db l'hash file
-            // $teamItem->hash_file_name =  $hash_filename;
+            // Scrivo l'hash file
+            $teamItem->hash_file_name =  $hash_filename;
 
             // Recupero la tipologia del file: image, audio, ecc, ecc
             $filetype = $allowedTypes[$file->getClientOriginalExtension()];
 
-            // Scrivo nel db il MIME
-            $teamItem->file_mime=$file->getclientMimeType();
-
             // eseguo la conversione in webp solo se si trata di un immagine
             if ($filetype=='image'){
-                $this->convert_in_webp($do, $path_image, $url, $hash_filename, $filetype, $tempPath, $teamItem);
+                $file_cover=$this->convert_in_webp($do, $path_image, $url, $hash_filename, $filetype, $tempPath, $teamItem);
             }
-
-            // scrivo nel db il nome del file
-            $teamItem->hash_file = env('BUCKET_PATH_FILE_FOLDER') .'/'. $path_image .'/'. $filenameWithoutExtension;
-            /* NOTA BENE:
-                l'estensione viene aggiunta direttamente nella vista
-            */
 
             // gestione cover di default nel caso di file audio
             if ($filetype == 'audio') {
 
-                // Scrivo nel db la cover di default
-                $teamItem->file_cover = env('DEFAULT_COVER'); // il file copertina vero e proprio viene abbinato successivamente
-                                                              // dal creator in item_edit
+                // scrivo la cover di default
+                $teamItem->file_cover = env('DEFAULT_COVER');
+
             } else {
 
-                // se è un immagine, hash_file e file_cover conterranno lo stesso valore
-                $teamItem->file_cover = env('BUCKET_PATH_FILE_FOLDER') .'/'. $path_image .'/'. $filenameWithoutExtension;
+                // scrivo la cover vera e propria
+                $teamItem->file_cover = env('BUCKET_PATH_FILE_FOLDER') .'/'. $file_cover;
             }
 
             // Genero il numero crescente della posizione
             $num = FileHelper::generate_position_number($this->teamId);
             $teamItem->position = $num;
 
-            // gestione del nome di default dell'EcoNFT, NOTA BENE: Non si tratta del nome del file!
+            // gestione del nome di default
             $hex = str_pad($num, 4, "0", STR_PAD_LEFT);
             $numero_casuale = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
             $teamItem->title = '#' . $numero_casuale . $hex;
 
-            // Scrivo l'id della collezione. NOTA BENE: la tabella team contiene le collezioni.
             $teamItem->team_id = $this->teamId;
 
-            // scrivo il nome del file criptato.
-            $teamItem->cript_filename = $crypt_filename;
+            $teamItem->cript_filename = env('BUCKET_PATH_FILE_FOLDER') . '/' . $crypt_filename;
 
-            // $teamItem->path_image = $path_image;
+            $teamItem->path_image = $path_image;
 
-            // $teamItem->path_absolute = $url; // il path assoluto dell'immagine
+            $teamItem->path_absolute = $url; // il path assoluto dell'immagine
 
             // Scrivo nel record la tipologia del file: image, audio, ecc, ecc
             $teamItem->type = $filetype;
 
-            // bind, determina se un EcoNFT è accoppiato forzatamente ad un utility reale o meno, di default non lo è.
             $teamItem->bind = 0;
 
-            // Il floor price viene scritto dal creator nell'intestazoine della collection
-            // se non lo ha stabilito di default sarà 0. Questa logica è gestita nel metodo mount().
-            $teamItem->price = $this->floorPrice;
+            $teamItem->price = $this->floorPrice; // se non è stato inserito nessun floor price di default scriverà 0
 
+            $teamItem->hash_file = $url;
             $teamItem->show = true;
 
             $teamItem->save();
 
             /*
-                NOTA BENE: Invalidazione della cache.
-                Questo serve a forzare il recupero dei dati anziché l'ultilizzo
+                questo serve per forzare il recupero dei dati anziché l'ultilizzo
                 di quelli in cache...
-                Quando si aggiunge uno o più file, è necessario che la vista si aggiorni per mostrare i nuovi file aggiunti.
             */
             $team = Auth::user()->currentTeam;
             Cache::forget('items-' . $team->id);
@@ -550,9 +498,9 @@ class Items extends Component
         //$this->progress += $this->udm;
 
         // salvo i dati del file e del percorso nel database
-        // $item->update(['webp'=> env('BUCKET_PATH_FILE_FOLDER') . "/" . $file_output]);
-        // $item->update(['webp_filename'=> $newName]);
-        // $item->update(['extention'=> 'webp']);
+        $item->update(['webp'=> env('BUCKET_PATH_FILE_FOLDER') . "/" . $file_output]);
+        $item->update(['webp_filename'=> $newName]);
+        $item->update(['extention'=> 'webp']);
 
         return $file_output;
     }

@@ -3,7 +3,7 @@
 ?>
 
 <?php if(count($traits)>0): ?>
-    <div class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div class="relative bg-white rounded-lg shadow-md dark:bg-gray-800">
 
         <div class="grid grid-cols-1 m-2 border border-gray-300">
             <table class="table-auto w-full text-left">
@@ -28,4 +28,5 @@
             </table>
         </div>
     </div>
-<?php endif; ?><?php /**PATH /var/www/natan_blog/resources/views/livewire/collections/item-include/traits-for-item.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+<?php /**PATH /var/www/natan_blog/resources/views/livewire/collections/item-include/traits-for-item.blade.php ENDPATH**/ ?>

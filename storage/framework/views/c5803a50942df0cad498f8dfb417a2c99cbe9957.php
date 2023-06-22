@@ -14,10 +14,10 @@
 
     </div>
 
-    <div id="view" class="w-11/12 absolute top-[66px] z-10 ml-2" :class="{'': open}">
+    <div id="view" class="w-11/12 absolute top-[66px] z-10 ml-2 border border-green-500" :class="{'': open}">
 
         <div class="h-screen fixed w-[180px] md:w-[240px] bg-white hidden md:block shadow-xl px-3 transition-transform duration-300
-                        ease-in-out rounded-lg" :class="{'w-[144]': open, 'hidden': !open}" id="sidebar">
+                    ease-in-out rounded-lg" :class="{'w-[144]': open, 'hidden': !open}" id="sidebar">
 
             <div class="mt-5 h-screen overflow-y-auto">
                 <?php echo e($head); ?>
@@ -34,21 +34,18 @@
             </div>
         </div>
 
-        <div class="absolute -top-[80px] w-screen flex justify-center mt-2">
+        <div class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 bg-gray-100 border-red-900
+                                grid grid-cols-1 gap-4 p-2 rounded grid-flow-row justify-items-start">
             <div class="">
                 <?php echo e($bodyhead); ?>
 
             </div>
         </div>
 
-        <div class="z-20 absolute top-[140px] gap-6 md:left-[250px] grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6"
-            :class="{'left-[195px] grid-cols-1': open, 'grid-cols-2 ml-4 mr-4': !open}">
+        <?php echo e($items); ?>
 
-            <?php echo e($items); ?>
-
-        </div>
 
     </div>
 
 </div>
-<?php /**PATH /var/www/natan_blog/resources/views/components/sidebar.blade.php ENDPATH**/ ?>
+<?php /**PATH /var/www/natan_blog/resources/views/components/sidebar-traits.blade.php ENDPATH**/ ?>

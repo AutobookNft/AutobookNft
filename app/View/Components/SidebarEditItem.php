@@ -2,24 +2,19 @@
 
 namespace App\View\Components;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 use App\Models\Sidebar as sdb;
 
-class Sidebar extends Component
+class SidebarEditItem extends Component
 {
     /**
-     * The alert type.
+     * Create a new component instance.
      *
-     * @var string
+     * @return void
      */
+
     public $type;
 
-    /**
-     * The alert message.
-     *
-     * @var string
-     */
     public $message;
 
     public $title;
@@ -34,32 +29,22 @@ class Sidebar extends Component
 
     public $dateCreation;
 
-    /**
-     * Create the component instance.
-     *
-     * @param  string  $type
-     * @param  string  $message
-     * @return void
-     */
-    public function __construct($wichsidebar)
-    {
 
+     public function __construct($wichsidebar)
+    {
         $this->wichsidebar = $wichsidebar;
         $this->sidebars = config('SidebarConfiguration.' . $wichsidebar, []);
-
     }
 
-        /**
+    /**
      * Get the view / contents that represent the component.
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render()
     {
-
-        return view('components.sidebar', [
-            'sidebars' => $this->sidebars,
+        return view('components.sidebar-edit-item', [
+             'sidebars' => $this->sidebars,
         ]);
     }
-
 }
