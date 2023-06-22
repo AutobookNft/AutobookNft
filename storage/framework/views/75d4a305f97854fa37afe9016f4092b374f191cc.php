@@ -65,7 +65,7 @@
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('collection', null, []); ?> 
-       <a href="<?php echo e(url('/dashboard/collection/item_upload/')); ?>">
+        <a href="<?php echo e(url('/dashboard/collection/item_upload/')); ?>">
             <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sidebar-leftarrow','data' => ['item' => ''.e(__('Collection')).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('sidebar-leftarrow'); ?>
@@ -87,7 +87,7 @@
     
 
      <?php $__env->slot('traits', null, []); ?> 
-       <a href="<?php echo e(url('dashboard/collection/items_edit/'. $itemId . '/traits')); ?>">
+        <a href="<?php echo e(url('dashboard/collection/items_edit/'. $itemId . '/traits')); ?>">
             <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sidebar-item','data' => ['item' => 'Traits']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('sidebar-item'); ?>
@@ -175,7 +175,9 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'mr-3','on' => 'errore']); ?>
-                    <label class='text-red-800 font-bold text-xl'> <?php echo e(__('This item non cannot be transfered')); ?> </label>
+                    <label class='text-red-800 font-bold text-xl'> <?php echo e(__('This item non cannot be transfered')); ?>
+
+                    </label>
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
@@ -185,7 +187,8 @@
              <?php $__env->endSlot(); ?>
 
              <?php $__env->slot('content', null, []); ?> 
-                <?php echo e(__('Are you sure you would like to transfer this item from collection') . ' '. "$team->name" . __(' to collection ')); ?> <?php echo e($team_name .'?'); ?>
+                <?php echo e(__('Are you sure you would like to transfer this item from collection') . ' '. "$team->name" . __('
+                to collection ')); ?> <?php echo e($team_name .'?'); ?>
 
              <?php $__env->endSlot(); ?>
 
@@ -235,9 +238,10 @@
 
 
         <?php
-            $items_ = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
+        $items_ = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
         ?>
 
+<<<<<<< HEAD:storage/framework/views/75d4a305f97854fa37afe9016f4092b374f191cc.php
 <<<<<<< HEAD:storage/framework/views/75d4a305f97854fa37afe9016f4092b374f191cc.php
         <div
             class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
@@ -252,48 +256,67 @@
 =======
        <div
         class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
+=======
+        <div
+            class="absolute top-20 xs:left-60 xl:left-80 lg:w-5/6 md:2/6 grid grid-cols-1 gap-4 p-2 rounded justify-items-start">
+>>>>>>> e903259 (pseudo commit):storage/framework/views/fa5ab7946ab810626e8bb06fa5ecef9474cca181.php
 
-        <?php if(Auth::user()->usertype!='epp'): ?>
-        <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e(__('Manage the ')); ?><?php echo e($teamItem->title); ?> <?php echo e(__('item')); ?></p>
-        <?php else: ?>
-        <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e($teamItem->title); ?> </p>
-        <?php endif; ?>
+            <?php if(Auth::user()->usertype!='epp'): ?>
+            <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e(__('Manage the ')); ?><?php echo e($teamItem->title); ?> <?php echo e(__('item')); ?></p>
+            <?php else: ?>
+            <p class='font-medium text-white sm:text-4xl xl:text-7xl'> <?php echo e($teamItem->title); ?> </p>
+            <?php endif; ?>
 
-    </div>
-
+<<<<<<< HEAD:storage/framework/views/75d4a305f97854fa37afe9016f4092b374f191cc.php
 >>>>>>> f0ed47c (unito locale con remoto):storage/framework/views/fa5ab7946ab810626e8bb06fa5ecef9474cca181.php
+=======
+        </div>
+>>>>>>> e903259 (pseudo commit):storage/framework/views/fa5ab7946ab810626e8bb06fa5ecef9474cca181.php
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('items', null, []); ?> 
 
-            <?php
-                $cardType='edit';
-                $show_traits_button=false;
-            ?>
+        <?php
+        $cardType='edit';
+        $show_traits_button=false;
+        ?>
 
-            <?php echo $__env->make('livewire.item-image', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('livewire.item-image', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
+<<<<<<< HEAD:storage/framework/views/75d4a305f97854fa37afe9016f4092b374f191cc.php
             <?php if($this->externaTransfer): ?>
                 <?php echo $__env->make('livewire.collections.item-include.external-transfer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <?php endif; ?>
+=======
+        <?php if($this->externaTransfer): ?>
+        <?php echo $__env->make('livewire.collections.item-include.external-transfer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php endif; ?>
+>>>>>>> e903259 (pseudo commit):storage/framework/views/fa5ab7946ab810626e8bb06fa5ecef9474cca181.php
 
-            <?php
-                $traits = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
-            ?>
+        <?php
+        $traits = App\Models\Item_traits::where('teams_items_id', $itemId)->get();
+        ?>
 
-            <?php echo $__env->make('livewire.collections.item-include.traits-for-item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('livewire.collections.item-include.traits-for-item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <?php if($utility->util_description != ''): ?>
-                <?php echo $__env->make('livewire.collections.item-include.utility-for-item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            <?php endif; ?>
+        <?php if($utility->util_description != ''): ?>
+        <?php echo $__env->make('livewire.collections.item-include.utility-for-item', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php endif; ?>
 
+<<<<<<< HEAD:storage/framework/views/75d4a305f97854fa37afe9016f4092b374f191cc.php
             <div
                 class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
 
                     <?php echo QrCode::size(200)->generate($utility->hash_file . ".webp"); ?>
+=======
+        <div
+            class="min-w-full mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 flex justify-center p-2">
+
+            <?php echo QrCode::size(200)->generate($utility->hash_file . ".webp"); ?>
+>>>>>>> e903259 (pseudo commit):storage/framework/views/fa5ab7946ab810626e8bb06fa5ecef9474cca181.php
 
 
-            </div>
+        </div>
 
      <?php $__env->endSlot(); ?>
 
@@ -303,5 +326,9 @@
 <?php $component = $__componentOriginalee6f77ea8284c9edd154cd0c9b3b80eff04c2bfa; ?>
 <?php unset($__componentOriginalee6f77ea8284c9edd154cd0c9b3b80eff04c2bfa); ?>
 <?php endif; ?>
+<<<<<<< HEAD:storage/framework/views/75d4a305f97854fa37afe9016f4092b374f191cc.php
 
 <?php /**PATH /var/www/natan_blog/resources/views/livewire/collections/items-edit.blade.php ENDPATH**/ ?>
+=======
+<?php /**PATH /home/forge/nftflorence.com/resources/views/livewire/collections/items-edit.blade.php ENDPATH**/ ?>
+>>>>>>> e903259 (pseudo commit):storage/framework/views/fa5ab7946ab810626e8bb06fa5ecef9474cca181.php
