@@ -1,5 +1,5 @@
 <x-collections.layout-item
-    itemId={{ .$item['id'] }}
+    itemId={{ $item['id'] }}
     imagefile={{ $item['hash_file'] }}
     audiofile={{ $audio_file }}
     description={{ $item['description'] }}

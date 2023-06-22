@@ -1,8 +1,11 @@
 <x-sidebar wichsidebar='item-edit'>
 
     <x-slot:head>
-        <x-sidebarhead image="{{ $teamItem->file_cover }}" name="{{ $team->name }}" type="{{ $teamItem->type }}"
-            pagename="{{ 'Edit item' }}" />
+        <x-sidebarhead
+            image="{{ $fileCover }}"
+            name="{{ $team->name }}"
+            type="{{ $teamItem->type }}"
+            pagename="{{ 'Edit item' }}"/>
     </x-slot:head>
 
     <x-slot:search>

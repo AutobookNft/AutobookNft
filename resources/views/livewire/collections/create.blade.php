@@ -12,7 +12,7 @@
         overflow-hidden shadow-xl transform sm:align-middle w-96" role="dialog" aria-modal="true"
             aria-labelledby="modal-headline">
 
-            <form wire:submit.prevent="upload()" wire:loading.attr="disabled">
+            <form wire:submit.prevent="upload()">
                 <!-- Aggiungi un campo di input per l'upload di immagini -->
                 <div x-data="{ fileName: null, filePreview: null }" class="grid grid-cols-1 mb-4 bg-gray-500">
 
@@ -90,7 +90,7 @@
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
 
                         <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                            <button type="submit"
+                            <button type="submit" wire:loading.remove
                                 class="inline-flex items-center px-4 py-2 my-3 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700
                                 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
                                 {{ __('Save') }}

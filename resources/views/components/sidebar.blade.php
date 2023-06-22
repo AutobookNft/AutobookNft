@@ -19,7 +19,7 @@
         <div class="h-screen fixed w-[180px] md:w-[240px] bg-white hidden md:block shadow-xl px-3 transition-transform duration-300
                         ease-in-out rounded-lg" :class="{'w-[144]': open, 'hidden': !open}" id="sidebar">
 
-            <div class="mt-5 h-screen overflow-y-auto">
+            <div class="mt-[20px] h-screen overflow-y-auto">
                 {{ $head }}
 
                 {{-- CAMPO DI RICERCA --}}
